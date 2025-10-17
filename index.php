@@ -1,5 +1,5 @@
 <?php
-// index.php - Halaman Dinamis dengan Tema Waktu
+// index.php - Halaman Dinamis dengan Tema Waktu (Warna Gradasi Biru Sesuai Waktu)
 
 // Judul halaman
 $title = "Selamat Datang di APP1";
@@ -12,22 +12,26 @@ $hour = date('H');
 $name = "Aura Rizkiatul Arsyi";
 $nim = "H1101231003";
 
-// Tentukan tema warna & pesan sesuai waktu
+// Tema warna biru sesuai waktu
 if ($hour >= 5 && $hour < 11) {
-    $bgColor = "linear-gradient(135deg, #FFFAE3, #FFF4C4)";
-    $textColor = "#333";
+    // Pagi — biru lembut dan cerah
+    $bgColor = "linear-gradient(135deg, #D6EAF8, #AED6F1)";
+    $textColor = "#1A1A1A";
     $greeting = "Selamat Pagi! Awali harimu dengan semangat dan senyum 😊";
 } elseif ($hour >= 11 && $hour < 15) {
-    $bgColor = "linear-gradient(135deg, #E3F2FD, #BBDEFB)";
-    $textColor = "#222";
+    // Siang — biru langit segar
+    $bgColor = "linear-gradient(135deg, #5DADE2, #3498DB)";
+    $textColor = "#fff";
     $greeting = "Selamat Siang! Terus produktif dan jangan lupa istirahat sejenak ☀️";
 } elseif ($hour >= 15 && $hour < 18) {
-    $bgColor = "linear-gradient(135deg, #FFE0B2, #FFCC80)";
-    $textColor = "#222";
+    // Sore — biru agak gelap ke navy lembut
+    $bgColor = "linear-gradient(135deg, #2874A6, #1B4F72)";
+    $textColor = "#f1f1f1";
     $greeting = "Selamat Sore! Waktu yang pas untuk refleksi dan bersyukur 🌇";
 } else {
-    $bgColor = "linear-gradient(135deg, #1E1E2F, #2C3E50)";
-    $textColor = "#f1f1f1";
+    // Malam — biru tua ke hitam elegan
+    $bgColor = "linear-gradient(135deg, #0D1B2A, #1B263B)";
+    $textColor = "#EAECEE";
     $greeting = "Selamat Malam! Waktunya menenangkan diri dan beristirahat 🌙";
 }
 ?>
@@ -54,10 +58,10 @@ if ($hour >= 5 && $hour < 11) {
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             max-width: 700px;
             width: 90%;
             padding: 50px;
@@ -66,9 +70,10 @@ if ($hour >= 5 && $hour < 11) {
         }
 
         h1 {
-            color: #007bff;
+            color: #FFFFFF;
             font-size: 2em;
             margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         p {
@@ -79,21 +84,21 @@ if ($hour >= 5 && $hour < 11) {
         .info {
             margin-top: 30px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 15px;
             display: inline-block;
             animation: pulse 3s infinite;
         }
 
         .highlight {
-            color: #007bff;
+            color: #00BFFF;
             font-weight: 600;
         }
 
         .footer {
             margin-top: 40px;
             font-size: 0.9em;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
         @keyframes fadeInUp {
@@ -108,9 +113,9 @@ if ($hour >= 5 && $hour < 11) {
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0,123,255, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(0,123,255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0,123,255, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(0,191,255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0,191,255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0,191,255, 0); }
         }
 
         .quote {
