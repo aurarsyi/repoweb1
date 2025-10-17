@@ -1,15 +1,35 @@
 <?php
-// index.php - Halaman Utama yang Ditingkatkan
+// index.php - Halaman Dinamis dengan Tema Waktu
 
 // Judul halaman
 $title = "Selamat Datang di APP1";
 
 // Waktu saat ini
 $date = date('l, d F Y H:i:s');
+$hour = date('H');
 
 // Identitas Pembuat
 $name = "Aura Rizkiatul Arsyi";
 $nim = "H1101231003";
+
+// Tentukan tema warna & pesan sesuai waktu
+if ($hour >= 5 && $hour < 11) {
+    $bgColor = "linear-gradient(135deg, #FFFAE3, #FFF4C4)";
+    $textColor = "#333";
+    $greeting = "Selamat Pagi! Awali harimu dengan semangat dan senyum 😊";
+} elseif ($hour >= 11 && $hour < 15) {
+    $bgColor = "linear-gradient(135deg, #E3F2FD, #BBDEFB)";
+    $textColor = "#222";
+    $greeting = "Selamat Siang! Terus produktif dan jangan lupa istirahat sejenak ☀️";
+} elseif ($hour >= 15 && $hour < 18) {
+    $bgColor = "linear-gradient(135deg, #FFE0B2, #FFCC80)";
+    $textColor = "#222";
+    $greeting = "Selamat Sore! Waktu yang pas untuk refleksi dan bersyukur 🌇";
+} else {
+    $bgColor = "linear-gradient(135deg, #1E1E2F, #2C3E50)";
+    $textColor = "#f1f1f1";
+    $greeting = "Selamat Malam! Waktunya menenangkan diri dan beristirahat 🌙";
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -22,21 +42,22 @@ $nim = "H1101231003";
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+            background: <?php echo $bgColor; ?>;
+            color: <?php echo $textColor; ?>;
             margin: 0;
             padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            color: #333;
-            overflow: hidden;
+            transition: background 1s ease;
         }
 
         .card {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             max-width: 700px;
             width: 90%;
             padding: 50px;
@@ -53,28 +74,26 @@ $nim = "H1101231003";
         p {
             font-size: 1.1em;
             margin: 10px 0;
-            color: #555;
         }
 
         .info {
             margin-top: 30px;
-            padding: 15px;
-            background: #f0f8ff;
-            border-left: 5px solid #007bff;
-            border-radius: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
             display: inline-block;
-            animation: pulse 2s infinite;
-        }
-
-        .footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #777;
+            animation: pulse 3s infinite;
         }
 
         .highlight {
             color: #007bff;
             font-weight: 600;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            opacity: 0.8;
         }
 
         @keyframes fadeInUp {
@@ -94,21 +113,11 @@ $nim = "H1101231003";
             100% { box-shadow: 0 0 0 0 rgba(0,123,255, 0); }
         }
 
-        .btn {
-            display: inline-block;
+        .quote {
             margin-top: 25px;
-            padding: 10px 25px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-            transform: translateY(-3px);
+            font-style: italic;
+            font-size: 1em;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -119,14 +128,26 @@ $nim = "H1101231003";
         <p>Waktu saat ini: <strong><?php echo $date; ?></strong></p>
 
         <div class="info">
-            <p>Dikembangkan oleh:</p>
-            <p><span class="highlight"><?php echo $name; ?></span></p>
-            <p>NIM: <strong><?php echo $nim; ?></strong></p>
+            <p><strong><?php echo $greeting; ?></strong></p>
         </div>
 
-        <a href="#" class="btn">Jelajahi Lebih Lanjut</a>
+        <div class="quote">
+            <?php
+                // Pesan motivasi acak ringan
+                $quotes = [
+                    "Konsistensi kecil setiap hari jauh lebih berarti daripada usaha besar sesekali.",
+                    "Belajar bukan soal cepat, tapi soal terus melangkah.",
+                    "Kamu tidak harus hebat untuk memulai, tapi kamu harus memulai untuk menjadi hebat.",
+                    "Setiap kesulitan adalah tanda bahwa kamu sedang bertumbuh.",
+                    "Jangan takut gagal, takutlah jika kamu berhenti mencoba."
+                ];
+                echo $quotes[array_rand($quotes)];
+            ?>
+        </div>
 
         <div class="footer">
+            <p>Dikembangkan oleh <span class="highlight"><?php echo $name; ?></span><br>
+            NIM: <strong><?php echo $nim; ?></strong></p>
             &copy; <?php echo date('Y'); ?> APP1. All Rights Reserved.
         </div>
     </div>
